@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f3f0ea;
+  --surface: #fffdf9;
+  --surface-2: #f6f1e8;
+  --ink: #1e1b17;
+  --muted: #6f675e;
+  --line: #e4ddd2;
+  --accent: #1b6b56;
+  --accent-ink: #f3fbf7;
+  --accent-soft: #e5f3ee;
+  --expense: #d4533a;
+  --income: #1b6b56;
+  --want: #b6791d;
+  --need: #345f7a;
+  --warn: #a86b12;
+  --danger: #c2412d;
+  --danger-ink: #fffdf9;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #141311;
+  --surface: #221f1c;
+  --surface-2: #2b2622;
+  --ink: #f4eee6;
+  --muted: #b0a69a;
+  --line: #3a342e;
+  --accent: #3dcc9e;
+  --accent-ink: #06281f;
+  --accent-soft: #1a3330;
+  --expense: #ff8a72;
+  --income: #3dcc9e;
+  --want: #e2b15a;
+  --need: #8eb8d4;
+  --warn: #e2b15a;
+  --danger: #ff8a72;
+  --danger-ink: #2a100c;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-expense: var(--expense);
+  --color-income: var(--income);
+  --color-want: var(--want);
+  --color-need: var(--need);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-danger-ink: var(--danger-ink);
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Noto Sans CJK SC", "Source Han Sans SC", "WenQuanYi Micro Hei", "Microsoft YaHei", ui-sans-serif, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  background: #e7e1d6;
+}
+
+html.dark {
+  background: #0c0b0a;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+a,
+input,
+label {
+  touch-action: manipulation;
+}
+
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+::placeholder {
+  color: var(--muted);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input[type="date"] {
+  color-scheme: inherit;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fade-in 160ms ease-out;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-12%) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate(220deg);
+    opacity: 0;
+  }
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -10px;
+  width: 8px;
+  height: 14px;
+  border-radius: 2px;
+  animation: confetti-fall 950ms ease-in forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .confetti-piece {
+    animation: none !important;
+  }
+}
